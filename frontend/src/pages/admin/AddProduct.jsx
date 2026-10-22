@@ -19,7 +19,7 @@ function AddProduct() {
       frm.append("description", data.description);
       frm.append("price", data.price);
       frm.append("image", data.image);
-
+      console.log(data.image);
       const response = await instance.post("/products/addProduct", frm);
 
       console.log(response);
