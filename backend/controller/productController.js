@@ -57,12 +57,12 @@ export default async function createProduct(req, res) {
       image: uploaded.secure_url,
       imagePublicId: uploaded.public_id,
     });
-    const savedProduct = await product.save();
-    res.status(201).json({
-      success: true,
-      message: "Product created successfully",
-      product: savedProduct,
-    });
+      const savedProduct = await product.save();
+      res.status(201).json({
+        success: true,
+        message: "Product created successfully",
+        product: savedProduct,
+      });
   } catch (error) {
     // If the image was uploaded but saving the product failed, remove the image
     if (uploaded?.public_id) {
