@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import User from "../model/userModel.js";
 import "dotenv/config";
 
 const generateToken = (userId, role) => {
@@ -8,9 +7,9 @@ const generateToken = (userId, role) => {
       id: userId,
       role: role,
     },
-    process.env.JWT_SECRET,
+    process.env.JWT_SECRET || "dhcbbceuhiwjzwwnxwviqe83ygd38xnk",
     {
-      expireIn: "7d",
+      expiresIn: "7d",
     }
   );
 };

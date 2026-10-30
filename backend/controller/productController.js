@@ -5,7 +5,7 @@
 //     console.log(req.body);
 //     const { name, price, description } = req.body;
 //     if (!req.file) {
-//       return res.status(400).json({
+//       return return res.status(400).json({
 //         success: false,
 //         message: "Upload an image",
 //       });
@@ -17,13 +17,13 @@
 //       image: `/uploads/${req.file.filename}`,
 //     });
 //     const savedProduct = await product.save();
-//     res.status(201).json({
+//     return res.status(201).json({
 //       success: true,
 //       message: "Product created successfully",
 //       product: savedProduct,
 //     });
 //   } catch (error) {
-//     res.status(500).json({
+//     return res.status(500).json({
 //       success: false,
 //       message: error.message,
 //     });
@@ -41,7 +41,7 @@ export default async function createProduct(req, res) {
   try {
     const { name, price, description } = req.body;
     if (!req.file) {
-      return res.status(400).json({
+      return  res.status(400).json({
         success: false,
         message: "Upload an image",
       });
@@ -58,7 +58,7 @@ export default async function createProduct(req, res) {
       imagePublicId: uploaded.public_id,
     });
       const savedProduct = await product.save();
-      res.status(201).json({
+      return res.status(201).json({
         success: true,
         message: "Product created successfully",
         product: savedProduct,
@@ -68,7 +68,7 @@ export default async function createProduct(req, res) {
     if (uploaded?.public_id) {
       await deleteFromCloudinary(uploaded.public_id).catch(() => {});
     }
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
     });

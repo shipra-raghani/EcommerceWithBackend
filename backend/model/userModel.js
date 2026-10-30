@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Product name is required"],
+    required: [true, "Name is required"],
   },
   email: {
     type: String,
@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, "Product name is required"],
+    required: [true, "Passwor is required"],
     minlength: [6, "Password must be at least 6 characters"],
   },
   role: {

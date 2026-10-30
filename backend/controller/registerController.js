@@ -6,17 +6,21 @@ export default async function createUser(req, res) {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
-      res.status(400).json({ message: "Name, Email, Password are required" });
+      return res
+        .status(400)
+        .json({ message: "Name, Email, Password are required" });
     }
     if (password.length < 6) {
-      res.status(400).json({ message: "Password must be of 6 charaxters" });
+      return res
+        .status(400)
+        .json({ message: "Password must be of 6 charaxters" });
     }
 
     //To checck the existing user
-    const existingUser = User.findOne({ email });
+    const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      res.status(409).json({ message: "User already exists" });
+      return res.status(409).json({ message: "User already exists" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -37,12 +41,12 @@ export default async function createUser(req, res) {
   } catch (error) {
     // Handle duplicate email errors
     // if (error.code === 11000) {
-    //   return res.status(409).json({
+    //   return return res.status(409).json({
     //     message: "Email already registered",
     //   });
     // }
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
