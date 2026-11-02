@@ -28,7 +28,7 @@ export default async function loginUser(req, res) {
     return res
       .cookie("auth_token", token, {
         httpOnly: true,
-        secure: true,
+        secure: false,
         sameSite: "strict",
         maxAge: 3600000,
       })
@@ -36,6 +36,7 @@ export default async function loginUser(req, res) {
       .json({
         message: "Login Successfull",
         success: true,
+        token,
         user: {
           _id: user._id,
           name: user.name,
