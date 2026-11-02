@@ -29,7 +29,7 @@ export default async function loginUser(req, res) {
       .cookie("auth_token", token, {
         httpOnly: true,
         secure: true,
-        sameSite: "none",
+        sameSite: "strict",
         maxAge: 3600000,
       })
       .status(200)
