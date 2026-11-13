@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useAuth } from "../contexts/AuthProvider";
 function Header() {
+  const { isAuth } = useAuth();
   return (
     <header className="header">
       <h1 className="logo">
@@ -20,7 +21,11 @@ function Header() {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            {isAuth ? (
+              <Link to="/">Logout</Link>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
           </li>
           <li>
             <Link to="/" className="cart-icon" aria-label="Shopping cart">

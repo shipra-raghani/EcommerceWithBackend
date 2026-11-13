@@ -6,6 +6,8 @@ import Register from "./pages/Register";
 import AddProduct from "./pages/admin/AddProduct";
 import "./App.css";
 import Contact from "./pages/Contact";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthProvider } from "./contexts/AuthProvider";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,7 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/add",
-        element: <AddProduct />,
+        element: (
+          <ProtectedRoute>
+            <AddProduct />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/login",
@@ -46,7 +52,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </>
   );
 }

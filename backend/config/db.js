@@ -4,7 +4,7 @@ import dns from "node:dns";
 
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
-export const db = async () => {
+async function db() {
   try {
     const mongoUri = process.env.MONGO_URI;
     await mongoose.connect(mongoUri);
@@ -12,4 +12,5 @@ export const db = async () => {
   } catch (error) {
     console.error(`MongoDb connection error:${error.message}`);
   }
-};
+}
+export default db;

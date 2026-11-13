@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
-export default function auth(req, res, next) {
+export default function authMiddleware(req, res, next) {
   try {
     const token = req.cookies.auth_token;
     if (!token) {

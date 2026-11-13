@@ -1,5 +1,5 @@
 import express from "express";
-import { db } from "./config/db.js";
+import db from "./config/db.js";
 import "dotenv/config";
 import cors from "cors";
 import productRoutes from "./routes/productRoute.js";
@@ -10,7 +10,7 @@ const port = 3001;
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
-db();
+await db();
 
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
