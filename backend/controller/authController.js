@@ -1,6 +1,5 @@
 import User from "../model/userModel.js";
 import bcrypt from "bcryptjs";
-import generateToken from "./authToken.js";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
@@ -66,6 +65,8 @@ export async function createUser(req, res) {
 
 //Login
 export async function loginUser(req, res) {
+  console.log("LOGIN BODY:", req.body);
+
   try {
     const { email, password } = req.body;
 

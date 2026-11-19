@@ -36,7 +36,7 @@ import {
   deleteFromCloudinary,
 } from "../config/cloudinary.js";
 
-export default async function createProduct(req, res) {
+export async function createProduct(req, res) {
   let uploaded = null;
   try {
     const { name, price, description } = req.body;
@@ -68,6 +68,24 @@ export default async function createProduct(req, res) {
     if (uploaded?.public_id) {
       await deleteFromCloudinary(uploaded.public_id).catch(() => {});
     }
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
+
+export async function getAllProducts(req, res) {
+  try {
+    const products = await Product.find();
+
+    return res.status(200).json({
+      success: true,
+      message: "Products fetched successfully",
+      totalProducts: products.length,
+      products: products,
+    });
+  } catch (error) {
     return res.status(500).json({
       success: false,
       message: error.message,
