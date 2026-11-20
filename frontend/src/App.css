@@ -385,3 +385,89 @@
   background-color: #198754;
   transform: scale(1.02);
 }
+
+/* //Search and Filter */
+.search-and-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+.search-and-filter input {
+  padding: 10px;
+  border: 1px solid rgb(212, 212, 212);
+}
+.filter-container button {
+  padding: 10px;
+}
+.filterPanel {
+  display: flex;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+  height: 200px;
+  width: 300px;
+  border: 1px solid rgb(227, 227, 227);
+}
+.filter-btn {
+  background-color: #fff;
+  border: 1px solid rgb(212, 212, 212);
+}
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-right: 1px solid rgb(227, 227, 227);
+}
+.leftPanel button {
+  background-color: #fff;
+  border-bottom: 1px solid rgb(227, 227, 227);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.filterPrice {
+  width: 100%;
+  text-align: left;
+}
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  height: 100%;
+  padding: 20px;
+  gap: 10px;
+  width: 100%;
+  justify-content: space-between;
+}
+.leftPanel button:hover {
+  background-color: #b1b1b1;
+  width: 100%;
+  text-align: left;
+}
+.rightPanel label {
+  display: flex;
+  gap: 4px;
+}
+.rightPanel label {
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+}
+#description {
+  height: calc(100% - 80%);
+  margin: 10px;
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 4px;
+}
+.clearButton {
+  width: calc(100% - 10%);
+  background-color: #222;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  text-decoration: solid;
+  font-weight: 600;
+  font-size: 14px;
+}
